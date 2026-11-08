@@ -1,28 +1,29 @@
 name: Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: 'Release Version (e.g., 0.49.0 for GA or 0.49.0-rc1 for RC)'
-        required: true
-        type: string
-      useSuffix:
-        description: 'Build suffixed images (e.g., 0.49.0-0 before final 0.49.0)'
-        required: true
-        type: boolean
-        default: true
-      releaseSuffix:
-        description: 'Release Suffix (e.g., 0 for 0.49.0-0, used only if useSuffix is true)'
-        required: true
-        type: string
-        default: '0'
-      sourceBuildRunId:
-        description: 'GitHub Actions Run ID of the source build (find in Actions tab URL)'
-        required: true
-        type: string
-
-# Declare default permissions as read only
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       releaseVersion:
+#         description: 'Release Version (e.g., 0.49.0 for GA or 0.49.0-rc1 for RC)'
+#         required: true
+#         type: string
+#       useSuffix:
+#         description: 'Build suffixed images (e.g., 0.49.0-0 before final 0.49.0)'
+#         required: true
+#         type: boolean
+#         default: true
+#       releaseSuffix:
+#         description: 'Release Suffix (e.g., 0 for 0.49.0-0, used only if useSuffix is true)'
+#         required: true
+#         type: string
+#         default: '0'
+#       sourceBuildRunId:
+#         description: 'GitHub Actions Run ID of the source build (find in Actions tab URL)'
+#         required: true
+#         type: string
+# 
+# # Declare default permissions as read only
 permissions:
   contents: read
 

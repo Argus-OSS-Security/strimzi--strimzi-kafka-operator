@@ -1,15 +1,16 @@
 name: Build
 
-on:
-  push:
-    branches:
-      - "main"
-      - "release-*"
-  pull_request:
-    branches:
-      - "*"
-
-# Declare default permissions as read only
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - "main"
+#       - "release-*"
+#   pull_request:
+#     branches:
+#       - "*"
+# 
+# # Declare default permissions as read only
 permissions:
   contents: read
 

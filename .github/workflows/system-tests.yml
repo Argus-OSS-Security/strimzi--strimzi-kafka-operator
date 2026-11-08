@@ -1,49 +1,50 @@
 name: System Tests
 
-on:
-  # Trigger for manual execution from GitHub UI
-  workflow_dispatch:
-    inputs:
-      releaseVersion:
-        description: "Release version to test (i.e. 'latest', '0.46.0')"
-        required: false
-        default: "latest"
-      kafkaVersion:
-        description: "Kafka version. e.g. '4.0.0' or 'latest'"
-        required: false
-        default: "latest"
-      pipeline:
-        description: "Comma-separated or single pipeline name(s)"
-        required: false
-        default: "regression,upgrade,regression-fg,acceptance-helm"
-        type: string
-      clusterSecurityEncryption:
-        description: "Encryption used for the internal Kafka cluster communication"
-        required: false
-        default: "tls"
-        type: choice
-        options:
-          - tls
-          - none
-      clusterSecurityAuthentication:
-        description: "Authentication used for the internal Kafka cluster communication. 'mtls' can be used only together with 'tls' encryption."
-        required: false
-        default: "mtls"
-        type: choice
-        options:
-          - mtls
-          - service-account
-          - none
-  # Automated trigger for issue comment
-  issue_comment:
-    types: [created]
-  # Testing trigger for PRs - tests workflow changes
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - '.github/workflows/run-system-tests.yml'
-      - '.github/workflows/system-tests.yml'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Trigger for manual execution from GitHub UI
+#   workflow_dispatch:
+#     inputs:
+#       releaseVersion:
+#         description: "Release version to test (i.e. 'latest', '0.46.0')"
+#         required: false
+#         default: "latest"
+#       kafkaVersion:
+#         description: "Kafka version. e.g. '4.0.0' or 'latest'"
+#         required: false
+#         default: "latest"
+#       pipeline:
+#         description: "Comma-separated or single pipeline name(s)"
+#         required: false
+#         default: "regression,upgrade,regression-fg,acceptance-helm"
+#         type: string
+#       clusterSecurityEncryption:
+#         description: "Encryption used for the internal Kafka cluster communication"
+#         required: false
+#         default: "tls"
+#         type: choice
+#         options:
+#           - tls
+#           - none
+#       clusterSecurityAuthentication:
+#         description: "Authentication used for the internal Kafka cluster communication. 'mtls' can be used only together with 'tls' encryption."
+#         required: false
+#         default: "mtls"
+#         type: choice
+#         options:
+#           - mtls
+#           - service-account
+#           - none
+#   # Automated trigger for issue comment
+#   issue_comment:
+#     types: [created]
+#   # Testing trigger for PRs - tests workflow changes
+#   pull_request:
+#     types: [opened, synchronize]
+#     paths:
+#       - '.github/workflows/run-system-tests.yml'
+#       - '.github/workflows/system-tests.yml'
+# 
 permissions:
   contents: read
 

@@ -1,34 +1,35 @@
 name: Snyk Scanning
 
-on:
-  # Run after build workflow finishes in non-blocking way
-  workflow_run:
-    workflows: ["Build"]
-    types:
-      - completed
-    branches:
-      - main
-    # `branches` matches the triggering run's head branch by name only. A fork PR
-    # whose branch is also named "main" matches it, and workflow_run jobs get the
-    # org secrets regardless of who produced the build. Every job below therefore
-    # also checks head_repository before touching the build artifact.
-  # Allow to run it also as reusable workflow from releases
-  workflow_call:
-    inputs:
-      releaseVersion:
-        description: 'Release version for Snyk monitoring target reference'
-        required: false
-        type: string
-        default: 'latest'
-      sourceBuildRunId:
-        description: 'Build workflow run ID for artifact download'
-        required: true
-        type: string
-    secrets:
-      SNYK_TOKEN:
-        required: true
-
-# Declare default permissions as read only
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Run after build workflow finishes in non-blocking way
+#   workflow_run:
+#     workflows: ["Build"]
+#     types:
+#       - completed
+#     branches:
+#       - main
+#     # `branches` matches the triggering run's head branch by name only. A fork PR
+#     # whose branch is also named "main" matches it, and workflow_run jobs get the
+#     # org secrets regardless of who produced the build. Every job below therefore
+#     # also checks head_repository before touching the build artifact.
+#   # Allow to run it also as reusable workflow from releases
+#   workflow_call:
+#     inputs:
+#       releaseVersion:
+#         description: 'Release version for Snyk monitoring target reference'
+#         required: false
+#         type: string
+#         default: 'latest'
+#       sourceBuildRunId:
+#         description: 'Build workflow run ID for artifact download'
+#         required: true
+#         type: string
+#     secrets:
+#       SNYK_TOKEN:
+#         required: true
+# 
+# # Declare default permissions as read only
 permissions:
   contents: read
 
